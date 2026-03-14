@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="All Rights Reserved"
+
+[[mods]]
+    modId="aq2lava"
+    version="${mod_version}"
+    displayName="Aquaculture 2: Lava Fishing Addon"
+    displayURL="https://minecraft.curseforge.com/projects/aquaculture"
+    issueTrackerURL="https://github.com/TeamMetallurgy/Aquaculture/issues"
+    authors="Shadowclaimer, Girafi"
+    credits=""
+    description='''
+    Adds Lava fishing for Aquaculture 2!
+    '''
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="aquaculture"
+    type="required"
+    ordering="AFTER"
+    side="BOTH"

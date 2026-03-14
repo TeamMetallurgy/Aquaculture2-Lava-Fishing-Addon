@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Q ",
+    "QOQ",
+    " Q "
+  ],
+  "key": {
+    "Q": {
+      "tag": "c:gems/quartz"
+    },
+    "O": {
+      "item": "aquaculture:obsidian_hook"
+    }
+  },
+  "result": {
+    "id": "aquaculture:quartz_hook"
+  }
+}
