@@ -2,8 +2,11 @@ plugins {
     id 'java-library'
 	id 'eclipse'
     id 'idea'
-    id 'maven-publish'
     id 'net.neoforged.gradle.userdev' version '7.0.165'
+    id 'net.darkhax.curseforgegradle' version '1.1.24'
+    id "com.modrinth.minotaur" version "2.+"
+    id 'git-changelog'
+    id 'parse-version-range'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -24,7 +27,7 @@ repositories {
   flatDir { dirs 'deps' }
 }
 
-version = "${minecraft_version}-${mod_version}" + getBuildNumber()
+version = "${minecraft_version}-${mod_version}"
 group = "com.teammetallurgy.aq2lava"
 
 base {
@@ -59,7 +62,6 @@ runs {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
     compileOnly "com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}"
     runtimeOnly "com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}"
@@ -85,25 +87,35 @@ processResources {
     inputs.properties(expandProps)
 }
 
-publishing {
-    tasks.publish.dependsOn 'build'
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId "aquaculture2_lavafishingaddon${minecraft_version}"
-            artifact jar
-        }
-    }
-    repositories {
-        if (project.hasProperty('maven_repo')) {
-            maven { url maven_repo }
-        } else {
-            mavenLocal()
-        }
-    }
+task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    apiToken = System.getenv("curse_auth")
+
+    var mainFile = upload(1486796, jar)
+    mainFile.changelogType = 'markdown'
+    mainFile.changelog = rootProject.findProperty('mod_changelog')
+    mainFile.addJavaVersion('Java 21')
+    mainFile.releaseType = 'release'
+    mainFile.addModLoader('NeoForge')
+    mainFile.addRequirement('aquaculture')
+    def vr = rootProject.parseVersionRange(minecraft_version_range)
+    mainFile.addGameVersion(*vr.quoted)
 }
 
-String getBuildNumber() {
-    return System.getenv('BUILD_NUMBER') ? ".jenkins" + System.getenv('BUILD_NUMBER') : "";
+modrinth {
+    var changelogText = rootProject.findProperty('mod_changelog')
+
+    token = System.getenv("modrinth_auth")
+    projectId = "CSFxt0U5"
+    changelog = changelogText
+    versionNumber = "${mod_version}"
+    versionName = "Aquaculture2LavaFishingAddon-${minecraft_version}-${mod_version}"
+    versionType = "release"
+    loaders = ["neoforge"]
+    gameVersions = rootProject.parseVersionRange(minecraft_version_range).list
+    uploadFile = jar
+    dependencies {
+        required.project('aquaculture')
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {

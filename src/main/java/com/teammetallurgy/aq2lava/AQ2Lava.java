@@ -15,7 +15,6 @@ import net.neoforged.neoforge.registries.DeferredItem;
 
 @Mod(value = AQ2Lava.MOD_ID)
 public class AQ2Lava {
-    public static AQ2Lava instance;
     public final static String MOD_ID = "aq2lava";
 
     //Hooks
@@ -35,14 +34,11 @@ public class AQ2Lava {
     public static final DeferredItem<Item> OBSIDIAN_NOTE_HOOK = AquacultureAPI.registerHook(OBSIDIAN_NOTE);
 
     public AQ2Lava(ModContainer modContainer, IEventBus modBus) {
-        instance = this;
         modBus.addListener(this::setupCommon);
         modBus.addListener(this::setupClient);
-        //modContainer.registerConfig(ModConfig.Type.COMMON, AquaConfig.spec);
     }
 
     private void setupCommon(FMLCommonSetupEvent event) {
-        //TODO Name Nether star hook work in lava
     }
 
     private void setupClient(FMLClientSetupEvent event) {

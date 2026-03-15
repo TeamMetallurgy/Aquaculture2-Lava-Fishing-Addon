@@ -1,4 +1,4 @@
-# [![Aquaculture2-Lava-Fishing-Addon](http://cf.way2muchnoise.eu/60028.svg "Aquaculture 2: Lava Fishing Addon") Aquaculture 2: Lava Fishing Addon](https://www.curseforge.com/minecraft/mc-mods/aquaculture)
+# [![Aquaculture2-Lava-Fishing-Addon](http://cf.way2muchnoise.eu/60028.svg "Aquaculture 2: Lava Fishing Addon") Aquaculture 2: Lava Fishing Addon](https://www.curseforge.com/minecraft/mc-mods/aquaculture-2-lava-fishing-addon)
 
 This is the official repository and issue-tracker for Aquaculture 2: Lava Fishing Addon
 - Enables lava fishing in Aquaculture 2, but does not provide any lava loot. Inteded to be used by modpack makers, to provide their own loot tables.
