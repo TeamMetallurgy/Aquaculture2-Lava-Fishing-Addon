@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "aquaculture:obsidian_hook"
-    },
-    {
-      "item": "aquaculture:obsidian_hook"
-    }
+    "aquaculture:obsidian_hook",
+    "aquaculture:obsidian_hook"
   ],
   "result": {
     "id": "aquaculture:double_obsidian_hook"

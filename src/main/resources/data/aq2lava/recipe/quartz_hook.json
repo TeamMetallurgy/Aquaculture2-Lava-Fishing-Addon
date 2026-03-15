@@ -6,12 +6,8 @@
     " Q "
   ],
   "key": {
-    "Q": {
-      "tag": "c:gems/quartz"
-    },
-    "O": {
-      "item": "aquaculture:obsidian_hook"
-    }
+    "Q": "#c:gems/quartz",
+    "O": "aquaculture:obsidian_hook"
   },
   "result": {
     "id": "aquaculture:quartz_hook"

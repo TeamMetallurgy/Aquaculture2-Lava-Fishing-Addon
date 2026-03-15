@@ -6,12 +6,8 @@
     " G "
   ],
   "key": {
-    "G": {
-      "tag": "c:dusts/glowstone"
-    },
-    "H": {
-      "item": "aquaculture:iron_hook"
-    }
+    "G": "#c:dusts/glowstone",
+    "H": "aquaculture:iron_hook"
   },
   "result": {
     "id": "aquaculture:glowstone_hook"
